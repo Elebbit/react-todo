@@ -40,7 +40,7 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something Broke!')
 });
 
-if(process.env.NODE_ENV == 'development') {
+if(process.env.NODE_ENV === 'development') {
     console.log('Server is running on development mode');
     const config = require('../webpack.dev.config');
     const compiler =webpack(config);
