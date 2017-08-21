@@ -1,11 +1,16 @@
 import React from 'react';
-import { Header } from '../components';
+import Shared  from '../shared/Shared';
+import { BrowserRouter } from 'react-router-dom';
+
+
 
 class App extends React.Component {
     render(){
 
         return (
-                <Header />
+            <BrowserRouter>
+                <Shared />
+            </BrowserRouter>
         );
     }
 }
