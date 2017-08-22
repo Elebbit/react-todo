@@ -4,9 +4,14 @@ import { Home, Login, Register } from '../containers';
 import { Header } from '../components';
 
 class Shared extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
-        let re = /(login|register)/;
-        let isAuth = re.test(this.props.location.pathname);
+        // let re = /(login|register)/;
+        // let isAuth = re.test(this.props.location.pathname);
+        // let isAuth = false;
+
         return (
             <div>
                 {isAuth ? undefined : <Header />}

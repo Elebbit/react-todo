@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Header extends React.Component {
 
@@ -7,24 +8,24 @@ class Header extends React.Component {
 
         const loginButton = (
             <li>
-                <a>
+                <Link to="/login">
                     <i className="material-icons">vpn_key</i>
-                </a>
+                </Link>
             </li>
         );
 
         const logoutButton = (
             <li>
-                <a>
+                <Link to="/logout">
                     <i className="material-icons">lock_open</i>
-                </a>
+                </Link>
             </li>
         );
 
         return (
             <nav>
                 <div className="nav-wrapper blue darken-1">
-                    <Link to="/" classNmae="brand-logo center">MEMOPAD</Link>
+                    <Link to="/" className="brand-logo center">MEMOPAD</Link>
 
                     <ul>
                         <li><a><i className="material-icons">search</i></a></li>
@@ -42,8 +43,8 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-    isLoggedIn: React.PropTypes.bool,
-    onLogout: React.PropTypes.func
+    isLoggedIn: PropTypes.bool,
+    onLogout: PropTypes.func
 };
 
 Header.defaultProps = {

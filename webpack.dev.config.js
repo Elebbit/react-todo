@@ -42,12 +42,14 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                loaders: ['react-hot', 'babel?' + JSON.stringify({
-                    cacheDirectory: true,
-                    presets: ['es2015', 'react']
-                })],
+                test: /.js$/,
+                loader: 'babel',
                 exclude: /node_modules/,
+                query: {
+                    cacheDirectory: true,
+                    presets: ['es2015', 'react'],
+                    plugins: ["react-hot-loader/babel"]
+                }
             },
             {
                 test: /\.css$/,
