@@ -11,12 +11,45 @@ class Authenication extends React.Component {
             password: ""
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleRegister = this.handleRegister.bind(this);
     }
 
     handleChange(e) {
         let nextState = {};
         nextState[e.target.name] = e.target.value;
         this.setState(nextState);
+    }
+
+    handleLogin() {
+        let id = this.state.username;
+        let pw = this.state.password;
+
+        this.props.onLogin(id, pw).then(
+            (success) => {
+                if(!success) {
+                    this.setState({
+                        password:''
+                    });
+                }
+            }
+        );
+    }
+
+    handleRegister() {
+        let id = this.state.username;
+        let pw = this.state.password;
+
+        this.props.onRegister(id, pw).then(
+            (result) => {
+                if(!result) {
+                    this.setState({
+                        username:'',
+                        password:''
+                    });
+                }
+            }
+        );
     }
 
     render() {
@@ -51,7 +84,8 @@ class Authenication extends React.Component {
                 <div className="card-content">
                     <div className="row">
                         {inputBoxed}
-                        <a className="waves-effect waves-light btn">SUBMIT</a>
+                        <a className="waves-effect waves-light btn"
+                        onClick={this.handleLogin}>SUBMIT</a>
                     </div>
                 </div>
 
@@ -69,7 +103,8 @@ class Authenication extends React.Component {
             <div className="card-content">
                 <div className="row">
                     {inputBoxed}
-                    <a className="waves-effect waves-light btn">CREATE</a>
+                    <a className="waves-effect waves-light btn"
+                    onClick={this.handleRegister}>CREATE</a>
                 </div>
             </div>
         );

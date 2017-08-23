@@ -2,7 +2,7 @@ import React from 'react';
 import {Authenication} from "../components";
 import { connect } from 'react-redux';
 import { loginRequest } from "../actions/authenication";
-import {  } from 'react-router-dom'
+import createHistory from 'history/createBrowserHistory';
 
 class Login extends React.Component {
     constructor(props) {
@@ -22,19 +22,24 @@ class Login extends React.Component {
                 document.cookie = 'key=' + btoa(JSON.stringify(loginData));
 
                 Materialize.toast('Welcome, ' + id + '!', 2000);
-                //browserHistory.push('/');
+                const history = createHistory();
+                history.push('/');
                 return true;
             } else {
-                let $toastContent = $()
+                let $toastContent = $('<span style="color : #ffb4ba">Incorrect username or password</span>');
+                Materialize.toast($toastContent, 2000);
+                return false
             }
             }
-            )
+        );
     }
 
     render() {
         return (
             <div>
-                <Authenication mode={true} />
+                <Authenication mode={true}
+                onLogin={this.handleLogin}
+                />
             </div>
         );
     }

@@ -1,9 +1,13 @@
-import * as types from 'actions/ActionTypes';
+import * as types from '../actions/ActionTypes';
 import update from 'react-addons-update';
 
 const initialState = {
     login: {
         status: 'INIT'
+    },
+    regitser: {
+      status: 'INIT',
+      error: -1
     },
     status: {
         isLoggedIn: false,
@@ -39,6 +43,28 @@ export default function authenication(state, action) {
                     status: {
                         $set: 'SUCCESS'
                     }
+                }
+            });
+
+        case types.AUTH_REGISTER:
+             return update(state, {
+                 register: {
+                         status: { $set: 'WAITING'},
+                         error: { $set: -1 }
+                 }
+             });
+
+        case types.AUTH_REGISTER_SUCCESS:
+            return update(state, {
+                register: {
+                    status: {$set: 'SUCCESS'}
+                }
+            });
+
+        case types.AUTH_REGISTER_FAILURE:
+            return update(state, {
+                register: {
+                    status: {$set: 'FAILURE'}
                 }
             });
 

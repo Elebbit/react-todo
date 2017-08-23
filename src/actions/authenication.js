@@ -1,7 +1,10 @@
 import {
     AUTH_LOGIN,
     AUTH_LOGIN_FAILURE,
-    AUTH_LOGIN_SUCCESS
+    AUTH_LOGIN_SUCCESS,
+    AUTH_REGISTER,
+    AUTH_REGISTER_FAILURE,
+    AUTH_REGISTER_SUCCESS
 } from "./ActionTypes";
 
 import axios from 'axios';
@@ -44,3 +47,34 @@ export function loginFailure() {
     };
 }
 
+/* REGISTER */
+export function registerRequest(username, password) {
+    return (dispatch) => {
+        dispatch(register());
+
+        return axios.post('/api/account/signup', {username, password})
+            .then((response) => {
+            dispatch(registerSuccess());
+            }).catch((error) => {
+            dispatch(registerFailure(error.response.data.code));
+            });
+    };
+}
+
+export function register() {
+    return {
+        type:AUTH_REGISTER
+    };
+}
+
+export function registerSuccess() {
+    return {
+        type:AUTH_REGISTER_SUCCESS
+    };
+}
+
+export function registerFailure(error) {
+    return {
+        type: AUTH_REGISTER_FAILURE
+    };
+}
