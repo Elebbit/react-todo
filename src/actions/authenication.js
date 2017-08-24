@@ -14,7 +14,7 @@ import axios from 'axios';
 ==============================================================================*/
 
 /* LOGIN */
-export function loginRequest(usernamem, password) {
+export function loginRequest(username, password) {
     return (dispatch) => {
         // Inform Login API is starting
         dispatch(login());

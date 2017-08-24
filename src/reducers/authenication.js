@@ -5,7 +5,7 @@ const initialState = {
     login: {
         status: 'INIT'
     },
-    regitser: {
+    register: {
       status: 'INIT',
       error: -1
     },

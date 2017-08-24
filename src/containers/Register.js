@@ -1,7 +1,8 @@
 import React from 'react';
 import { Authenication } from "../components";
 import { connect } from 'react-redux';
-import {registerRequest} from "../actions/authenication";
+import { registerRequest } from "../actions/authenication";
+import createHistory from 'history/createBrowserHistory';
 
 class Register extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class Register extends React.Component {
                     'Username already exists'
                 ];
 
-                let $toastContent = $('<span style="color: #ffb4ba">' + errorMessage[this.props.errorCode - 1] + '</span>');
+                let $toastContent = $('<span style="color: #FFB4BA">' + errorMessage[this.props.errorCode - 1] + '</span>');
                 Materialize.toast($toastContent, 2000);
                 return false;
             }

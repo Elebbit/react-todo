@@ -1,5 +1,5 @@
 import React from 'react';
-import {Authenication} from "../components";
+import { Authenication } from "../components";
 import { connect } from 'react-redux';
 import { loginRequest } from "../actions/authenication";
 import createHistory from 'history/createBrowserHistory';
@@ -59,4 +59,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps) (Login);
+export default connect(mapStateToProps, mapDispatchToProps) (Login);
